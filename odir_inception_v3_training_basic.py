@@ -13,6 +13,7 @@
 # limitations under the License.
 # ==============================================================================
 import os
+import time
 import tensorflow as tf
 from tensorflow.keras.applications import inception_v3
 from tensorflow.keras.layers import Dense, GlobalAveragePooling2D
@@ -44,7 +45,8 @@ patience = 5
 #                 6: 1.,
 #                 7: 2.505338078}
 
-token = secrets.token_hex(16)
+#token = secrets.token_hex(16)
+token = time.strftime("%Y%m%d-%H%M%S")
 folder = r'C:\Users\thund\Source\Repos\TFM-ODIR\models\image_classification\test_run'
 
 new_folder = os.path.join(folder, token)
@@ -144,7 +146,4 @@ score = FinalScore(new_folder)
 score.output()
 
 # plot output results
-#plotter.plot_output(test_predictions_baseline, y_test, x_test_drawing, os.path.join(new_folder, 'plot4.png'))
-
-for id in range(0, 400, 25):
-  plotter.plot_output(test_predictions_baseline, y_test, x_test_drawing, os.path.join(new_folder, 'plot4.'+ str(id//25 + 1) + '.png'), id)
+plotter.plot_output(test_predictions_baseline, y_test, x_test_drawing, os.path.join(new_folder, 'plot4.png'))
