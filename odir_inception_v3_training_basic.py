@@ -144,4 +144,7 @@ score = FinalScore(new_folder)
 score.output()
 
 # plot output results
-plotter.plot_output(test_predictions_baseline, y_test, x_test_drawing, os.path.join(new_folder, 'plot4.png'))
+#plotter.plot_output(test_predictions_baseline, y_test, x_test_drawing, os.path.join(new_folder, 'plot4.png'))
+
+for id in range(0, 400, 25):
+  plotter.plot_output(test_predictions_baseline, y_test, x_test_drawing, os.path.join(new_folder, 'plot4.'+ str(id//25 + 1) + '.png'), id)
